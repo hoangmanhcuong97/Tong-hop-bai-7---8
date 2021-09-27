@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Province</h3>
+<body>
+<p align="center">
+    <a th:href="@{/homePage/create}">
+        Add Customer
+    </a>
+</p>
+<div style="size: 17px;color: red">
+    <div th:if="${message}">
+        <span th:text="${message}"></span>
+    </div>
+</div>
+<table id = "listCustomer" border="2px" width="70%">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name Customer</th>
+        <th>Province</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Detail</th>
+
+    </tr>
+    </thead>
+    <tbody align="center">
+    <tr th:each="cus, cust : ${listCustomer}">
+        <td th:text="${cust.count}"></td>
+        <td th:text="${cus.getNameCustomer()}"></td>
+        <td th:if="${cus.province}" th:text="${cus.province.nameProvince}"></td>
+        <td><img th:src="@{'/image/'+${cus.img}}" width="50px" height="50px" alt="Not Found"></td>
+        <td><a th:href="@{/homePage/{id}/edit(id=${cus.getId()})}">Edit</a></td>
+        <td><a th:href="@{/homePage/{id}/delete(id=${cus.getId()})}">Delete</a></td>
+        <td><a th:href="@{/homePage/{id}/detail(id=${cus.getId()})}">Detail</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

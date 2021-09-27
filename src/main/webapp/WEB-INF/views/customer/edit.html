@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p align="center">
+    <a th:href="@{/homePage}">
+        Back to customer list
+    </a>
+</p>
+<form method="post" th:object="${editCustomer}" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <input type="hidden" th:field="*{id}">
+        </tr>
+        <tr>
+            <td><lavle>Name:</lavle></td>
+            <td><input type="text" th:field="*{nameCustomer}"/></td>
+        </tr>
+        <tr>
+            <td><lable>Province:</lable></td>
+            <td>
+                <select th:field="*{province}">
+                    <option th:each="p : ${province1}" th:value="${p.id}" th:text="${p.nameProvince}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><lable>Image:</lable></td>
+            <td>
+                <img th:src="@{'/image/'+${editCustomer.img}}" width="50px" height="50px" alt="Not found">
+                <input type="hidden" th:field="*{img}">
+                <input type="file" name="newImgFile">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update customer"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Province</title>
+</head>
+<body>
+<p align="center">
+    <a th:href="@{/homePage}">
+        Back to customer list
+    </a>
+</p>
+<form method="post" th:object="${customer}" enctype="multipart/form-data">
+    <table >
+        <tr>
+            <td><lable>Name:</lable></td>
+            <td>
+                <input type="text" th:field="*{nameCustomer}">
+            </td>
+        </tr>
+        <tr>
+            <td><lable>Province: </lable></td>
+            <td>
+                <select th:field="*{province}">
+                    <option th:each="p : ${province1}" th:value="${p.id}" th:text="${p.nameProvince}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><lable>Image:</lable></td>
+            <td><input type="file" th:field="*{img}"></td>
+        </tr>
+        <tr>
+            <td>
+                <button>Submit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

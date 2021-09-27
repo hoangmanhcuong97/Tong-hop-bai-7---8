@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Province</h3>
+<body>
+<p align="center">
+    <a th:href="@{/homeProvince/create}">
+        Add province
+    </a>
+</p>
+<div style="size: 17px;color: red">
+    <div th:if="${message}">
+        <span th:text="${message}"></span>
+    </div>
+</div>
+<table id = "listProvince" border="2px" width="70%">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name Province</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Detail</th>
+
+    </tr>
+    </thead>
+    <tbody align="center">
+    <tr th:each="pr, prStart : ${listProvince}">
+        <td th:text="${prStart.count}"></td>
+        <td th:text="${pr.getNameProvince()}"></td>
+        <td><a th:href="@{/homeProvince/{id}/edit(id=${pr.getId()})}">Edit</a></td>
+        <td><a th:href="@{/homeProvince/{id}/delete(id=${pr.getId()})}">Delete</a></td>
+        <td><a th:href="@{/homeProvince/{id}/detail(id=${pr.getId()})}">Detail</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
